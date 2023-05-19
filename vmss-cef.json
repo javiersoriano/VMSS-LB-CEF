@@ -366,8 +366,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Compute/virtualMachines/', concat(parameters('haproxyVMNamePrefix'), copyindex()))]",
-        "appVMExtensionsLoop"
+        "[resourceId('Microsoft.Compute/virtualMachines/', concat(parameters('haproxyVMNamePrefix'), copyindex()))]"
       ],
       "properties": {
         "publisher": "Microsoft.Azure.Extensions",
