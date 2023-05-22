@@ -326,7 +326,7 @@
             "name": "tcpProbe",
             "properties": {
               "protocol": "Tcp",
-              "port": 80,
+              "port": 514,
               "intervalInSeconds": 5,
               "numberOfProbes": 2
             }
@@ -695,7 +695,7 @@
 							"name": "AMA",
 							"properties": {
 								"publisher": "Microsoft.Azure.Monitor",
-								"typeHandlerVersion": "1.22",
+                "typeHandlerVersion": "1.25",
 								"autoUpgradeMinorVersion": true,
 								"enableAutomaticUpgrade": true,
 								"type": "AzureMonitorLinuxAgent"
@@ -733,7 +733,7 @@
 									"name": "[concat(parameters('Base_Name'), '-ipConfig')]",
 									"properties": {
 										"subnet": {
-											"id": "[concat(resourceId('Microsoft.Network/virtualNetworks', variables('vnetName')), '/subnets/default')]"
+											"id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'), variables ('subnetName'))]"
 										},
 										"privateIPAddressVersion": "IPv4",
 										"loadBalancerBackendAddressPools": [{
