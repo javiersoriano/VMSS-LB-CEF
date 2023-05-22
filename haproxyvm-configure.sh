@@ -93,7 +93,6 @@ listen http
     # Add application VMs to haproxy listener configuration
     for APPVM in "${APPVMS[@]}"; do
         echo "    server syslog $APPVM:$APPVM_PORT maxconn 5000 check" >> $HAPROXY_CFG
-        fi
     done
 
     chmod --reference ${HAPROXY_CFG}.default
