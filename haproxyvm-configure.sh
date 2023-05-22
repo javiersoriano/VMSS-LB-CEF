@@ -92,11 +92,7 @@ listen http
 
     # Add application VMs to haproxy listener configuration
     for APPVM in "${APPVMS[@]}"; do
-        APPVM_IP=`host $APPVM | awk '/has address/ { print $4 }'`
-        if [[ -z $APPVM_IP ]]; then
-            echo "Unknown hostname $APPVM. Cannot be added to $HAPROXY_CFG." >&2
-        else
-            echo "    server $APPVM $APPVM_IP:$APPVM_PORT maxconn 5000 check" >> $HAPROXY_CFG
+        echo "    server syslog $APPVM:$APPVM_PORT maxconn 5000 check" >> $HAPROXY_CFG
         fi
     done
 
