@@ -149,7 +149,7 @@
         "metadata": {
             "description": "The base URI where artifacts required by this template are located including a trailing '/'"
         },
-        "defaultValue": "[deployment().properties.templateLink.uri]"
+        "defaultValue": "https://raw.githubusercontent.com/javiersoriano/VMSS-LB-CEF/main/"
     },
     "_artifactsLocationSasToken": {
         "type": "securestring",
@@ -169,13 +169,6 @@
         "[uri(parameters('_artifactsLocation'), concat('keepalived-check-appsvc.sh', parameters('_artifactsLocationSasToken')))]"
       ],
       "commandToExecute": "[concat('sudo bash -x haproxyvm-configure.sh ', ' -a ', variables('lbIP'), ' -p ', variables('appVMPort'), ' -l ', parameters('lbDNSLabelPrefix'), '.', parameters('location'), '.cloudapp.azure.com -t ', variables('lbVIPPort'), ' -m ', parameters('haproxyVMNamePrefix'), '0 -b ', parameters('haproxyVMNamePrefix'), '1')]"
-    },
-    "numberOfAppInstances": 2,
-    "appVMScripts": {
-      "fileUris": [
-        "[uri(parameters('_artifactsLocation'), concat('apache-setup.sh', parameters('_artifactsLocationSasToken')))]"
-      ],
-      "commandToExecute": "sudo bash apache-setup.sh"
     },
     "appVMPort": 514,
     "imagePublisher": "Canonical",
