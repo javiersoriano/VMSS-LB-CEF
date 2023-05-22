@@ -475,7 +475,7 @@
 			"name": "[variables('loadbalancer_Name')]",
 			"location": "[resourceGroup().location]",
 			"dependsOn": [
-        "[resourceId('Microsoft.Compute/virtualMachines/extensions', concat(parameters('haproxyVMNamePrefix'), copyindex()), 'configureHAproxyVM')]"
+       "[resourceId('Microsoft.Compute/virtualMachines/extensions', parameters('haproxyVMNamePrefix'), 'configureHAproxyVM')]"
 			],
 			"sku": {
 				"name": "Standard"
